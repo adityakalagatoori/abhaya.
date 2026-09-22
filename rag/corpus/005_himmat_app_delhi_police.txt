@@ -1,0 +1,16 @@
+SOURCE_URL: https://en.wikipedia.org/wiki/Himmat_(app)
+TITLE: Himmat (app)
+PUBLISHER: Wikipedia
+AUTHOR: Wikipedia contributors
+PUBLISH_DATE: page continuously edited; content reflects launch facts from 2015
+RETRIEVED_DATE: 2026-09-21
+REGION: Delhi (fallback national-context source on women's safety technology)
+TOPIC: women's safety mobile application, government safety technology precedent
+
+---
+
+Himmat is an Indian women's safety mobile application created by Delhi Police. It was introduced by then-Home Minister Rajnath Singh on 1 January 2015, and made available for free download on Android via the Delhi Police website, with plans to expand to other platforms later.
+
+Reception and status: a parliamentary committee found in 2018 that the app had "failed to serve its purpose" due to low user registration and operational issues. The app later regained some recognition, appearing on lists of recommended women's safety technology in India.
+
+Relevance note: This is retained as background precedent for government-backed personal safety technology in India (panic-button/location-sharing style apps), relevant to the broader ABHAYA product context (e.g., RouteGuard/WalkGuard escalation concepts), not as route-specific safety evidence for Surat.

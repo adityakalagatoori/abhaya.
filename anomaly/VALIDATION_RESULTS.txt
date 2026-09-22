@@ -1,0 +1,17 @@
+[load_wisdm] parsed 1085356 samples ok, skipped 12848 malformed lines, 36 users
+
+=== Part 1: RUNNING (Jogging) detection vs held-out real Walking, per-user baseline ===
+users evaluated: 32
+confusion: TP(jog flagged)=15212 FN(jog missed)=1176 FP(walk flagged)=930 TN(walk clear)=11398
+precision=0.942 recall=0.928 accuracy=0.927
+
+=== Part 2: SUDDEN-STOP detection vs real moving->stationary label transitions ===
+users evaluated: 36, real transitions found: 26
+TP=26 FP=22 FN=0
+precision=0.542 recall=1.000
+
+=== Part 3 (LOW risk context), real user 1, real Walking->Jogging sequence ===
+state sequence: ['NORMAL', 'NORMAL', 'NORMAL', 'NORMAL', 'NORMAL', 'NORMAL', 'ANOMALY_CANDIDATE', 'ANOMALY_CANDIDATE', 'ANOMALY_CANDIDATE', 'ANOMALY_CANDIDATE', 'ANOMALY_CANDIDATE', 'ANOMALY_CANDIDATE', 'ANOMALY_CANDIDATE', 'ANOMALY_CANDIDATE', 'ANOMALY_CANDIDATE', 'ANOMALY_CANDIDATE']
+
+=== Part 3 (HIGH risk context), real user 1, real Walking->Jogging sequence ===
+state sequence: ['NORMAL', 'NORMAL', 'NORMAL', 'NORMAL', 'NORMAL', 'NORMAL', 'ANOMALY_CANDIDATE', 'ANOMALY_CANDIDATE', 'CAUTION', 'CAUTION', 'CAUTION', 'CAUTION', 'CAUTION', 'CAUTION', 'CAUTION', 'CAUTION']

@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "ABHAYA",
+    "slug": "abhaya-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "org.abhaya.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "ABHAYA needs your location to plan safe routes and monitor your journey.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "ABHAYA needs background location to monitor RouteGuard deviations and WalkGuard safety."
+      }
+    },
+    "android": {
+      "package": "org.abhaya.app",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "ABHAYA needs your location to plan safe routes and monitor your journey."
+        }
+      ],
+      "expo-font",
+      "expo-status-bar"
+    ]
+  }
+}

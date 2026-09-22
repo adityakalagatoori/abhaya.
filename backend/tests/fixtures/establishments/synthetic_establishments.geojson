@@ -1,0 +1,12 @@
+{
+  "type": "FeatureCollection",
+  "_note": "SYNTHETIC TEST FIXTURE ONLY. Not real establishment data.",
+  "features": [
+    {"type": "Feature",
+     "properties": {"name": "Test 24x7 Pharmacy", "category": "pharmacy", "verified": true, "open_hours": "24/7"},
+     "geometry": {"type": "Point", "coordinates": [72.8311, 21.1711]}},
+    {"type": "Feature",
+     "properties": {"name": "Test Cafe", "category": "cafe", "verified": false, "open_hours": "08:00-22:00"},
+     "geometry": {"type": "Point", "coordinates": [72.8322, 21.1701]}}
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "type": "FeatureCollection",
+  "_note": "SYNTHETIC TEST FIXTURE ONLY. Not real OSM data. Used solely to validate router algorithm correctness (time-aware risk, safety/time trade-off) per backend/tests. Real road network must come from data/road_network/ per app/data_loader.py contract.",
+  "features": [
+    {"type": "Feature", "properties": {"highway": "residential", "lit": "no", "name": "row0_a"},
+     "geometry": {"type": "LineString", "coordinates": [[72.8300, 21.1700], [72.8310, 21.1700]]}},
+    {"type": "Feature", "properties": {"highway": "residential", "lit": "no", "name": "row0_b"},
+     "geometry": {"type": "LineString", "coordinates": [[72.8310, 21.1700], [72.8320, 21.1700]]}},
+
+    {"type": "Feature", "properties": {"highway": "residential", "lit": "yes", "name": "row1_a"},
+     "geometry": {"type": "LineString", "coordinates": [[72.8300, 21.1710], [72.8310, 21.1710]]}},
+    {"type": "Feature", "properties": {"highway": "residential", "lit": "yes", "name": "row1_b"},
+     "geometry": {"type": "LineString", "coordinates": [[72.8310, 21.1710], [72.8320, 21.1710]]}},
+
+    {"type": "Feature", "properties": {"highway": "residential", "lit": "no", "name": "row2_a"},
+     "geometry": {"type": "LineString", "coordinates": [[72.8300, 21.1720], [72.8310, 21.1720]]}},
+    {"type": "Feature", "properties": {"highway": "residential", "lit": "no", "name": "row2_b"},
+     "geometry": {"type": "LineString", "coordinates": [[72.8310, 21.1720], [72.8320, 21.1720]]}},
+
+    {"type": "Feature", "properties": {"highway": "residential", "lit": "yes", "name": "col0_a"},
+     "geometry": {"type": "LineString", "coordinates": [[72.8300, 21.1700], [72.8300, 21.1710]]}},
+    {"type": "Feature", "properties": {"highway": "residential", "lit": "yes", "name": "col0_b"},
+     "geometry": {"type": "LineString", "coordinates": [[72.8300, 21.1710], [72.8300, 21.1720]]}},
+
+    {"type": "Feature", "properties": {"highway": "residential", "lit": "yes", "name": "col1_a"},
+     "geometry": {"type": "LineString", "coordinates": [[72.8310, 21.1700], [72.8310, 21.1710]]}},
+    {"type": "Feature", "properties": {"highway": "residential", "lit": "yes", "name": "col1_b"},
+     "geometry": {"type": "LineString", "coordinates": [[72.8310, 21.1710], [72.8310, 21.1720]]}},
+
+    {"type": "Feature", "properties": {"highway": "residential", "lit": "no", "name": "col2_a"},
+     "geometry": {"type": "LineString", "coordinates": [[72.8320, 21.1700], [72.8320, 21.1710]]}},
+    {"type": "Feature", "properties": {"highway": "residential", "lit": "no", "name": "col2_b"},
+     "geometry": {"type": "LineString", "coordinates": [[72.8320, 21.1710], [72.8320, 21.1720]]}}
+  ]
+}

@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: abhaya-backend
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    # Render injects $PORT; must bind to 0.0.0.0 so it's reachable externally.
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+    healthCheckPath: /health

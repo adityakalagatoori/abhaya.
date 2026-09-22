@@ -1,0 +1,249 @@
+[
+  {
+    "case": {
+      "label": "Night walk near Athwa riverfront, Surat (high structured risk)",
+      "location": "Athwa Lines riverfront service road, Surat",
+      "time": "2026-09-21T21:30:00+05:30",
+      "route_risk_context": {
+        "segments": [
+          {
+            "segment_id": "seg-4821",
+            "description": "riverfront service road near Athwa, low commercial density, low lighting reported"
+          }
+        ],
+        "total_risk": 0.71,
+        "high_risk_factors": [
+          "low_lighting_reported_zone",
+          "isolated_after_dark",
+          "low_foot_traffic"
+        ]
+      }
+    },
+    "result": {
+      "explanation": "The risk score for the Athwa Lines riverfront service road in Surat is 0.71, indicating a moderate risk level. The structured risk context reveals that the road is located in a low commercial density area with low lighting reported, which contributes to the moderate risk. The retrieved evidence confirms that the Surat Municipal Corporation's Streetlight Department is responsible for maintaining streetlights and high masts, but does not provide specific information about the current lighting conditions or the presence of CCTV or access control. The risk is not directly related to the specific location of the road, but rather to the overall infrastructure and maintenance practices in Surat.",
+      "grounded": true,
+      "sources_used": [
+        {
+          "text": "Citizens can file streetlight outage/complaint reports through the online portal (Complaint section under Online Services) or by phone at +91-261-2423750 to 2423756 or +91-261-2422285 to 2422287. Relevance note: This is an official municipal government source documenting that street lighting maintenance is zone-based and complaint-driven in Surat, meaning outage patterns are locally variable and not uniformly documented in real time. This corpus entry should be used only as general infrastructure-governance context, not as evidence about any specific street's current lighting condition.",
+          "source": "Surat Municipal Corporation — Streetlight Department (official page) — Surat Municipal Corporation (government) (https://www.suratmunicipal.gov.in/Departments/StreetLightsHome)",
+          "timestamp": "undated (official standing government page)",
+          "retrieved": "2026-09-21",
+          "score": 0.4668618440628052
+        },
+        {
+          "text": "The Surat Municipal Corporation's Streetlight Department is responsible for installation, operation, and maintenance of all streetlights on roads within SMC limits, as well as street/road lights on high masts at major traffic junctions. Streetlight services are provided through a partially decentralized management structure via 8 zone offices, with coordination and policy-making handled through the Streetlight (HQ) department, part of the Light & Energy Efficiency Cell.",
+          "source": "Surat Municipal Corporation — Streetlight Department (official page) — Surat Municipal Corporation (government) (https://www.suratmunicipal.gov.in/Departments/StreetLightsHome)",
+          "timestamp": "undated (official standing government page)",
+          "retrieved": "2026-09-21",
+          "score": 0.4537472128868103
+        },
+        {
+          "text": "Relevance note: this is an official (secondarily reproduced) railway security circular. It is generic national guidance, not a Surat-specific incident report, but is relevant background for any route/waiting-point context near Surat railway station (e.g., verified safe-haven pickup near a station, or WalkGuard's last-100m near a station exit). It should not be used to claim any specific Surat station segment currently lacks lighting or CCTV — only that lighting/CCTV/access-control are officially recognized risk factors for railway-adjacent areas.",
+          "source": "Railways: Guidelines to prevent incidents of Crime against Women in trains and in railway premises — GovtEmpDiary (reproducing Indian Railways Security Circular No. 02/2021) (https://govtempdiary.com/2021/03/railways-guidelines-to-prevent-incidents-of-crime-against-women-in-trains-and-in-railway-premises/73935)",
+          "timestamp": "2021-03-02",
+          "retrieved": "2026-09-21",
+          "score": 0.3936305344104767
+        },
+        {
+          "text": "Stated responsibilities (quoted from the official page):\n- \"Installation, operation & maintenance of all streetlight on the roads within SMC limits\"\n- Management of street and road lights at high masts positioned at major traffic junctions\n- \"Installation, operation & maintenance of Decorative Luminaries and Poles wherever necessary\"\n- Energy monitoring and efficiency implementation for streetlight services, including a Centralized Control and Monitoring System (CCMS) for reducing non-operational streetlights and improving uptime",
+          "source": "Surat Municipal Corporation — Streetlight Department (official page) — Surat Municipal Corporation (government) (https://www.suratmunicipal.gov.in/Departments/StreetLightsHome)",
+          "timestamp": "undated (official standing government page)",
+          "retrieved": "2026-09-21",
+          "score": 0.37539950013160706
+        }
+      ],
+      "uncertainty_note": null,
+      "_generation_backend": "ollama:qwen2.5:1.5b-instruct"
+    }
+  },
+  {
+    "case": {
+      "label": "Route near Surat railway station at night",
+      "location": "Surat railway station approach road",
+      "time": "2026-09-21T22:15:00+05:30",
+      "route_risk_context": {
+        "segments": [
+          {
+            "segment_id": "seg-1190",
+            "description": "station approach road, moderate foot traffic, unverified lighting"
+          }
+        ],
+        "total_risk": 0.55,
+        "high_risk_factors": [
+          "station_adjacent",
+          "night_travel"
+        ]
+      }
+    },
+    "result": {
+      "explanation": "The structured risk context indicates moderate foot traffic and unverified lighting on the Surat railway station approach road. The retrieved evidence does not provide specific details about lighting or CCTV status at this location. The safety index for Surat, which is listed as 80/80, places it among safer major cities in India alongside Navi Mumbai. The 2022 crime rate data shows that Surat, as the economic hub of Gujarat, has experienced a surge in crimes against women, particularly attributed to the consumption of IMFL and country liquor.",
+      "grounded": true,
+      "sources_used": [
+        {
+          "text": "Relevance note: this is an official (secondarily reproduced) railway security circular. It is generic national guidance, not a Surat-specific incident report, but is relevant background for any route/waiting-point context near Surat railway station (e.g., verified safe-haven pickup near a station, or WalkGuard's last-100m near a station exit). It should not be used to claim any specific Surat station segment currently lacks lighting or CCTV — only that lighting/CCTV/access-control are officially recognized risk factors for railway-adjacent areas.",
+          "source": "Railways: Guidelines to prevent incidents of Crime against Women in trains and in railway premises — GovtEmpDiary (reproducing Indian Railways Security Circular No. 02/2021) (https://govtempdiary.com/2021/03/railways-guidelines-to-prevent-incidents-of-crime-against-women-in-trains-and-in-railway-premises/73935)",
+          "timestamp": "2021-03-02",
+          "retrieved": "2026-09-21",
+          "score": 0.6330134868621826
+        },
+        {
+          "text": "The Surat Municipal Corporation's Streetlight Department is responsible for installation, operation, and maintenance of all streetlights on roads within SMC limits, as well as street/road lights on high masts at major traffic junctions. Streetlight services are provided through a partially decentralized management structure via 8 zone offices, with coordination and policy-making handled through the Streetlight (HQ) department, part of the Light & Energy Efficiency Cell.",
+          "source": "Surat Municipal Corporation — Streetlight Department (official page) — Surat Municipal Corporation (government) (https://www.suratmunicipal.gov.in/Departments/StreetLightsHome)",
+          "timestamp": "undated (official standing government page)",
+          "retrieved": "2026-09-21",
+          "score": 0.5291934609413147
+        },
+        {
+          "text": "Surat scores 80/80 on this site's safety index, placing it, per the source, among India's safer major cities alongside Navi Mumbai. The page frames most concerns as practical rather than violent-crime-related. Low-risk areas noted: Gopi Talav and other family-oriented public areas draw local families and are described as safer public spaces; heritage sites such as Surat Castle are recommended for daylight visits.",
+          "source": "Is Surat Safe for Travel Right Now? (2026 Safety Rating) — TravelSafe-Abroad.com (https://www.travelsafe-abroad.com/india/surat/)",
+          "timestamp": "2026 (site-dated safety index page)",
+          "retrieved": "2026-09-21",
+          "score": 0.4789735674858093
+        },
+        {
+          "text": "Surat-specific finding: Surat, described as the economic hub of Gujarat, recorded the highest number of crimes against women among cities in the state. The surge is attributed by the report to rising consumption of IMFL (India-made foreign liquor) and country liquor. A social activist filed an RTI application in September 2023 to obtain crime statistics from 13 of Surat's 36 police stations covering 2015 through 2023, and the resulting data indicated increasing rates of rape and harassment across those stations, with commentary blaming insufficient enforcement of prohibition laws in Gujarat (a legally \"dry\" state).",
+          "source": "2022 crime rate: NCRB data burns holes in much-touted Gujarat Model — The Federal (https://thefederal.com/category/states/west/gujarat/2022-crime-rate-ncrb-data-burns-holes-in-much-touted-gujarat-model-102570)",
+          "timestamp": "2023-12-07",
+          "retrieved": "2026-09-21",
+          "score": 0.45277851819992065
+        }
+      ],
+      "uncertainty_note": null,
+      "_generation_backend": "ollama:qwen2.5:1.5b-instruct"
+    }
+  },
+  {
+    "case": {
+      "label": "Daytime route in a well-documented low-risk area (should trigger uncertainty / low-grounding path)",
+      "location": "Gopi Talav area, Surat",
+      "time": "2026-09-21T11:00:00+05:30",
+      "route_risk_context": {
+        "segments": [
+          {
+            "segment_id": "seg-0042",
+            "description": "family park frontage road, daytime, high foot traffic"
+          }
+        ],
+        "total_risk": 0.12,
+        "high_risk_factors": []
+      }
+    },
+    "result": {
+      "explanation": "The Gopi Talav area in Surat is generally considered safe for travel, as it is described as a family-oriented public area and is noted as a safer public space. The structured risk context indicates a low risk score of 0.12, with no high-risk factors present. The retrieved evidence supports this assessment by highlighting that Surat, despite being the economic hub of Gujarat, has a relatively low crime rate, including a specific finding that Surat recorded the highest number of crimes against women among cities in the state. This suggests that while the area is generally safe, it is advisable to be cautious after dark, especially in unlit areas.",
+      "grounded": true,
+      "sources_used": [
+        {
+          "text": "Surat scores 80/80 on this site's safety index, placing it, per the source, among India's safer major cities alongside Navi Mumbai. The page frames most concerns as practical rather than violent-crime-related. Low-risk areas noted: Gopi Talav and other family-oriented public areas draw local families and are described as safer public spaces; heritage sites such as Surat Castle are recommended for daylight visits.",
+          "source": "Is Surat Safe for Travel Right Now? (2026 Safety Rating) — TravelSafe-Abroad.com (https://www.travelsafe-abroad.com/india/surat/)",
+          "timestamp": "2026 (site-dated safety index page)",
+          "retrieved": "2026-09-21",
+          "score": 0.5214377045631409
+        },
+        {
+          "text": "Surat-specific finding: Surat, described as the economic hub of Gujarat, recorded the highest number of crimes against women among cities in the state. The surge is attributed by the report to rising consumption of IMFL (India-made foreign liquor) and country liquor. A social activist filed an RTI application in September 2023 to obtain crime statistics from 13 of Surat's 36 police stations covering 2015 through 2023, and the resulting data indicated increasing rates of rape and harassment across those stations, with commentary blaming insufficient enforcement of prohibition laws in Gujarat (a legally \"dry\" state).",
+          "source": "2022 crime rate: NCRB data burns holes in much-touted Gujarat Model — The Federal (https://thefederal.com/category/states/west/gujarat/2022-crime-rate-ncrb-data-burns-holes-in-much-touted-gujarat-model-102570)",
+          "timestamp": "2023-12-07",
+          "retrieved": "2026-09-21",
+          "score": 0.3691965341567993
+        },
+        {
+          "text": "Note for developers: for a production system, download and parse the actual state/district tables from this PDF (or from data.gov.in's NCRB datasets) rather than relying only on secondary news analysis, to get precise, per-district figures for Surat.",
+          "source": "Crime in India 2022 (Volume/Book 1) — National Crime Records Bureau (NCRB), Ministry of Home Affairs, Government of India (https://www.ncrb.gov.in/uploads/nationalcrimerecordsbureau/custom/1701607577CrimeinIndia2022Book1.pdf)",
+          "timestamp": "2023 (release of 2022 data)",
+          "retrieved": "2026-09-21",
+          "score": 0.3505348563194275
+        },
+        {
+          "text": "Relevance note: This is a general tourist-safety index/advisory, not an incident report. It supports general guidance about isolated/unlit areas after dark but contains no specific incident data and should not be cited as evidence of a specific crime event.",
+          "source": "Is Surat Safe for Travel Right Now? (2026 Safety Rating) — TravelSafe-Abroad.com (https://www.travelsafe-abroad.com/india/surat/)",
+          "timestamp": "2026 (site-dated safety index page)",
+          "retrieved": "2026-09-21",
+          "score": 0.3503480553627014
+        }
+      ],
+      "uncertainty_note": null,
+      "_generation_backend": "ollama:qwen2.5:1.5b-instruct"
+    }
+  },
+  {
+    "case": {
+      "label": "Different city (Bengaluru) -- corpus is India/Gujarat-crime themed so generic passages still clear threshold; shown to demonstrate the model is NOT told this is Surat-specific",
+      "location": "MG Road, Bengaluru",
+      "time": "2026-09-21T23:00:00+05:30",
+      "route_risk_context": {
+        "segments": [
+          {
+            "segment_id": "seg-9999",
+            "description": "unmapped segment, no local evidence available"
+          }
+        ],
+        "total_risk": 0.4,
+        "high_risk_factors": [
+          "no_local_evidence"
+        ]
+      }
+    },
+    "result": {
+      "explanation": "The location MG Road, Bengaluru, is currently assessed by the routing/risk engine as having a total risk score of 0.4, indicating a moderate level of risk. The structured risk context mentions that there is no local evidence available for this segment, which is a key factor contributing to the low risk score. The retrieved evidence does not provide specific incident data or details about lighting or CCTV conditions in this particular location. It does, however, offer general guidance on the relevance of lighting and access control as risk factors for railway-adjacent areas, which is relevant to the context of the location. The evidence is general/regional context and should not be cited as a live report or specific incident data.",
+      "grounded": true,
+      "sources_used": [
+        {
+          "text": "Relevance note: This is a general tourist-safety index/advisory, not an incident report. It supports general guidance about isolated/unlit areas after dark but contains no specific incident data and should not be cited as evidence of a specific crime event.",
+          "source": "Is Surat Safe for Travel Right Now? (2026 Safety Rating) — TravelSafe-Abroad.com (https://www.travelsafe-abroad.com/india/surat/)",
+          "timestamp": "2026 (site-dated safety index page)",
+          "retrieved": "2026-09-21",
+          "score": 0.41277748346328735
+        },
+        {
+          "text": "Relevance note: this is an official (secondarily reproduced) railway security circular. It is generic national guidance, not a Surat-specific incident report, but is relevant background for any route/waiting-point context near Surat railway station (e.g., verified safe-haven pickup near a station, or WalkGuard's last-100m near a station exit). It should not be used to claim any specific Surat station segment currently lacks lighting or CCTV — only that lighting/CCTV/access-control are officially recognized risk factors for railway-adjacent areas.",
+          "source": "Railways: Guidelines to prevent incidents of Crime against Women in trains and in railway premises — GovtEmpDiary (reproducing Indian Railways Security Circular No. 02/2021) (https://govtempdiary.com/2021/03/railways-guidelines-to-prevent-incidents-of-crime-against-women-in-trains-and-in-railway-premises/73935)",
+          "timestamp": "2021-03-02",
+          "retrieved": "2026-09-21",
+          "score": 0.3917056918144226
+        },
+        {
+          "text": "Use in this corpus: this document is referenced as the authoritative government source underlying secondary reporting (see corpus entry 001, The Federal's analysis of Gujarat's 2022 NCRB figures, including Surat-specific commentary about crimes against women in the city). The full PDF was not reproduced verbatim in this corpus; the entry here records the source's existence, publisher, and scope so that the RAG system can cite the origin of NCRB-derived claims transparently, rather than treating secondary reporting as a primary statistic without attribution.",
+          "source": "Crime in India 2022 (Volume/Book 1) — National Crime Records Bureau (NCRB), Ministry of Home Affairs, Government of India (https://www.ncrb.gov.in/uploads/nationalcrimerecordsbureau/custom/1701607577CrimeinIndia2022Book1.pdf)",
+          "timestamp": "2023 (release of 2022 data)",
+          "retrieved": "2026-09-21",
+          "score": 0.38284677267074585
+        },
+        {
+          "text": "This is the official annual NCRB \"Crime in India\" publication for reporting year 2022, published by the Ministry of Home Affairs. It is the primary government source of state- and city-level registered crime statistics in India, including categories such as crimes against women (IPC/BNS-defined offences: assault, harassment, kidnapping, sexual offences), crimes against children, and cybercrime.",
+          "source": "Crime in India 2022 (Volume/Book 1) — National Crime Records Bureau (NCRB), Ministry of Home Affairs, Government of India (https://www.ncrb.gov.in/uploads/nationalcrimerecordsbureau/custom/1701607577CrimeinIndia2022Book1.pdf)",
+          "timestamp": "2023 (release of 2022 data)",
+          "retrieved": "2026-09-21",
+          "score": 0.36089128255844116
+        }
+      ],
+      "uncertainty_note": null,
+      "_generation_backend": "ollama:qwen2.5:1.5b-instruct"
+    }
+  },
+  {
+    "case": {
+      "label": "Fully out-of-domain query (must return honest uncertainty, no fabrication -- proves MIN_RELEVANCE_SCORE guardrail actually fires)",
+      "location": "unspecified location",
+      "time": "2026-09-21T12:00:00+05:30",
+      "route_risk_context": {
+        "segments": [
+          {
+            "segment_id": "seg-0000",
+            "description": "restaurant menu pricing and weather forecast"
+          }
+        ],
+        "total_risk": 0.0,
+        "high_risk_factors": [
+          "cheese_supply_shortage",
+          "average_rainfall_variance"
+        ]
+      }
+    },
+    "result": {
+      "explanation": "No sufficiently relevant real source text was found for this location/time/risk context in the current corpus. This is not a statement that the area is unsafe or safe -- it means the RAG layer has insufficient grounded evidence to comment beyond the structured risk score already computed by the routing/risk engine.",
+      "grounded": false,
+      "sources_used": [],
+      "uncertainty_note": "No sufficiently relevant real source text was found for this location/time/risk context in the current corpus. This is not a statement that the area is unsafe or safe -- it means the RAG layer has insufficient grounded evidence to comment beyond the structured risk score already computed by the routing/risk engine."
+    }
+  }
+]

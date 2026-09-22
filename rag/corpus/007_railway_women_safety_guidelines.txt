@@ -1,0 +1,30 @@
+SOURCE_URL: https://govtempdiary.com/2021/03/railways-guidelines-to-prevent-incidents-of-crime-against-women-in-trains-and-in-railway-premises/73935
+TITLE: Railways: Guidelines to prevent incidents of Crime against Women in trains and in railway premises
+PUBLISHER: GovtEmpDiary (reproducing Indian Railways Security Circular No. 02/2021)
+AUTHOR: Indian Railways / Railway Protection Force (circular), reproduced by GovtEmpDiary
+PUBLISH_DATE: 2021-03-02
+RETRIEVED_DATE: 2026-09-21
+REGION: India (national railway network, relevant to Surat railway station area)
+TOPIC: railway/station infrastructure safety guidelines for women
+
+---
+
+Indian Railways Security Circular No. 02/2021 (dated 2 March 2021) addresses crime against women in trains and on railway premises, citing approximately 4.6 million women passengers daily nationwide.
+
+Infrastructure & access-control measures specified:
+- Install proper lighting in vulnerable areas including platforms, parking areas, and maintenance depots.
+- Demolish abandoned structures that lack surveillance.
+- Close unauthorized entry/exit points and maintain controlled access to yards and coaching depots.
+- Remove encroachments blocking passenger areas.
+
+Technology & monitoring measures:
+- Deploy CCTV surveillance in vulnerable zones, including cameras specifically covering women's coaches.
+- Use the National Database on Sexual Offenders for area surveillance.
+
+Train-specific and staffing measures:
+- Brief escort parties on prevention protocols, especially for night operations.
+- Heightened monitoring near toilets, cited as a frequent incident location.
+- Verify identity credentials of outsourced personnel.
+- Gender-sensitization training for staff; publicize emergency helpline numbers and One Stop Centers.
+
+Relevance note: this is an official (secondarily reproduced) railway security circular. It is generic national guidance, not a Surat-specific incident report, but is relevant background for any route/waiting-point context near Surat railway station (e.g., verified safe-haven pickup near a station, or WalkGuard's last-100m near a station exit). It should not be used to claim any specific Surat station segment currently lacks lighting or CCTV — only that lighting/CCTV/access-control are officially recognized risk factors for railway-adjacent areas.

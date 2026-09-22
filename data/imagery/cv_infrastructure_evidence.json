@@ -1,0 +1,282 @@
+[
+  {
+    "lat": 21.185367,
+    "lon": 72.810656,
+    "timestamp": "2026-09-21T17:28:00Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.5116
+      },
+      {
+        "class": "open_establishment",
+        "confidence": 0.5583
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.164108333333,
+    "lon": 72.778441666667,
+    "timestamp": "2026-09-21T17:28:00Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.5687
+      },
+      {
+        "class": "visibility_barrier",
+        "confidence": 0.5276
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.165377777778,
+    "lon": 72.781565472222,
+    "timestamp": "2026-09-21T17:28:01Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.4868
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.194535,
+    "lon": 72.83192,
+    "timestamp": "2026-09-21T17:28:01Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.6843
+      },
+      {
+        "class": "open_establishment",
+        "confidence": 0.754
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.205203,
+    "lon": 72.840123,
+    "timestamp": "2026-09-21T17:28:01Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.6239
+      },
+      {
+        "class": "open_establishment",
+        "confidence": 0.5538
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.194656,
+    "lon": 72.833814,
+    "timestamp": "2026-09-21T17:28:01Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.455
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.1965637207,
+    "lon": 72.8602371216,
+    "timestamp": "2026-09-21T17:28:01Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.5145
+      },
+      {
+        "class": "visibility_barrier",
+        "confidence": 0.6135
+      },
+      {
+        "class": "open_establishment",
+        "confidence": 0.5237
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.244472,
+    "lon": 72.819657,
+    "timestamp": "2026-09-21T17:28:02Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.4742
+      },
+      {
+        "class": "visibility_barrier",
+        "confidence": 0.2538
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.165468194444,
+    "lon": 72.783256527778,
+    "timestamp": "2026-09-21T17:28:02Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.5388
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.206915,
+    "lon": 72.890941,
+    "timestamp": "2026-09-21T17:28:02Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.582
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.207363888889,
+    "lon": 72.796125,
+    "timestamp": "2026-09-21T17:28:02Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.441
+      },
+      {
+        "class": "visibility_barrier",
+        "confidence": 0.4854
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.202864,
+    "lon": 72.800053,
+    "timestamp": "2026-09-21T17:28:02Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.5043
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.2038345337,
+    "lon": 72.840057373,
+    "timestamp": "2026-09-21T17:28:02Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.4758
+      },
+      {
+        "class": "visibility_barrier",
+        "confidence": 0.3944
+      },
+      {
+        "class": "open_establishment",
+        "confidence": 0.6672
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.169425,
+    "lon": 72.851725,
+    "timestamp": "2026-09-21T17:28:03Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.5822
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.169528,
+    "lon": 72.851633,
+    "timestamp": "2026-09-21T17:28:03Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.5735
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.170511,
+    "lon": 72.851072,
+    "timestamp": "2026-09-21T17:28:03Z",
+    "detections": [
+      {
+        "class": "streetlight_broken",
+        "confidence": 0.3389
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.170706,
+    "lon": 72.850803,
+    "timestamp": "2026-09-21T17:28:03Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.5785
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.232965888889,
+    "lon": 72.854811472222,
+    "timestamp": "2026-09-21T17:28:04Z",
+    "detections": [
+      {
+        "class": "streetlight_working",
+        "confidence": 0.4575
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.143980444444,
+    "lon": 72.757933388889,
+    "timestamp": "2026-09-21T17:28:04Z",
+    "detections": [
+      {
+        "class": "streetlight_broken",
+        "confidence": 0.1622
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  },
+  {
+    "lat": 21.143959333333,
+    "lon": 72.757887194444,
+    "timestamp": "2026-09-21T17:28:04Z",
+    "detections": [
+      {
+        "class": "streetlight_broken",
+        "confidence": 0.2167
+      }
+    ],
+    "model_version": "yolov8n-coco+heuristics-v1"
+  }
+]

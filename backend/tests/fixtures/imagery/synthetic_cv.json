@@ -1,0 +1,10 @@
+[
+  {"lat": 21.1700, "lon": 72.8305, "timestamp": "2026-01-15T20:00:00",
+   "detections": [{"class": "streetlight_broken", "confidence": 0.85},
+                  {"class": "visibility_barrier", "confidence": 0.6}],
+   "model_version": "synthetic-test-fixture-v0"},
+  {"lat": 21.1710, "lon": 72.8305, "timestamp": "2026-01-15T20:00:00",
+   "detections": [{"class": "streetlight_working", "confidence": 0.9},
+                  {"class": "open_establishment", "confidence": 0.75}],
+   "model_version": "synthetic-test-fixture-v0"}
+]

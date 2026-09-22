@@ -1,0 +1,24 @@
+SOURCE_URL: https://www.suratmunicipal.gov.in/Departments/StreetLightsHome
+TITLE: Surat Municipal Corporation — Streetlight Department (official page)
+PUBLISHER: Surat Municipal Corporation (government)
+AUTHOR: Surat Municipal Corporation
+PUBLISH_DATE: undated (official standing government page)
+RETRIEVED_DATE: 2026-09-21
+REGION: Surat, Gujarat
+TOPIC: street lighting infrastructure, municipal services
+
+---
+
+The Surat Municipal Corporation's Streetlight Department is responsible for installation, operation, and maintenance of all streetlights on roads within SMC limits, as well as street/road lights on high masts at major traffic junctions.
+
+Streetlight services are provided through a partially decentralized management structure via 8 zone offices, with coordination and policy-making handled through the Streetlight (HQ) department, part of the Light & Energy Efficiency Cell.
+
+Stated responsibilities (quoted from the official page):
+- "Installation, operation & maintenance of all streetlight on the roads within SMC limits"
+- Management of street and road lights at high masts positioned at major traffic junctions
+- "Installation, operation & maintenance of Decorative Luminaries and Poles wherever necessary"
+- Energy monitoring and efficiency implementation for streetlight services, including a Centralized Control and Monitoring System (CCMS) for reducing non-operational streetlights and improving uptime
+
+Citizens can file streetlight outage/complaint reports through the online portal (Complaint section under Online Services) or by phone at +91-261-2423750 to 2423756 or +91-261-2422285 to 2422287.
+
+Relevance note: This is an official municipal government source documenting that street lighting maintenance is zone-based and complaint-driven in Surat, meaning outage patterns are locally variable and not uniformly documented in real time. This corpus entry should be used only as general infrastructure-governance context, not as evidence about any specific street's current lighting condition.

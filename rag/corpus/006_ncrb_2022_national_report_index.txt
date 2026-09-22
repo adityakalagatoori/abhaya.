@@ -1,0 +1,16 @@
+SOURCE_URL: https://www.ncrb.gov.in/uploads/nationalcrimerecordsbureau/custom/1701607577CrimeinIndia2022Book1.pdf
+TITLE: Crime in India 2022 (Volume/Book 1)
+PUBLISHER: National Crime Records Bureau (NCRB), Ministry of Home Affairs, Government of India
+AUTHOR: National Crime Records Bureau
+PUBLISH_DATE: 2023 (release of 2022 data)
+RETRIEVED_DATE: 2026-09-21
+REGION: India (national), including Gujarat state-level tables
+TOPIC: official government crime statistics
+
+---
+
+This is the official annual NCRB "Crime in India" publication for reporting year 2022, published by the Ministry of Home Affairs. It is the primary government source of state- and city-level registered crime statistics in India, including categories such as crimes against women (IPC/BNS-defined offences: assault, harassment, kidnapping, sexual offences), crimes against children, and cybercrime.
+
+Use in this corpus: this document is referenced as the authoritative government source underlying secondary reporting (see corpus entry 001, The Federal's analysis of Gujarat's 2022 NCRB figures, including Surat-specific commentary about crimes against women in the city). The full PDF was not reproduced verbatim in this corpus; the entry here records the source's existence, publisher, and scope so that the RAG system can cite the origin of NCRB-derived claims transparently, rather than treating secondary reporting as a primary statistic without attribution.
+
+Note for developers: for a production system, download and parse the actual state/district tables from this PDF (or from data.gov.in's NCRB datasets) rather than relying only on secondary news analysis, to get precise, per-district figures for Surat.

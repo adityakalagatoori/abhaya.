@@ -1,0 +1,34 @@
+# Dependencies (installable via npm install / pip install -r requirements.txt)
+node_modules/
+cv/pyenv/
+**/__pycache__/
+*.pyc
+
+# Local venvs
+venv/
+.venv/
+
+# Expo / React Native build artifacts
+.expo/
+dist/
+web-build/
+*.hbc
+
+# Downloaded tooling binaries (not source, shouldn't live in git)
+cloudflared.exe
+
+# Local databases
+*.db
+backend/abhaya.db
+
+# Environment / secrets
+.env
+.env.local
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
