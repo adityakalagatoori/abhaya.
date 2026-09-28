@@ -4,8 +4,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.db import init_db
-from app.routers import (companions, infrastructure, route, routeguard, safedrop, safehavens,
-                          safety_insight, transitguard, walkguard)
+from app.routers import (companions, geocode, infrastructure, route, routeguard, safedrop,
+                          safehavens, safety_insight, transitguard, walkguard)
 
 app = FastAPI(
     title="ABHAYA Backend",
@@ -40,6 +40,7 @@ app.include_router(safehavens.router, tags=["safe-havens"])
 app.include_router(safety_insight.router, tags=["safety-insight"])
 app.include_router(companions.router, tags=["companions"])
 app.include_router(transitguard.router, tags=["transitguard"])
+app.include_router(geocode.router, tags=["geocode"])
 
 
 @app.get("/health")
