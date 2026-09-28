@@ -17,7 +17,12 @@ export function setApiBaseUrl(url) {
   API_BASE_URL = url.replace(/\/+$/, "");
 }
 
-const REQUEST_TIMEOUT_MS = 15000;
+// Render's free tier has genuinely throttled/shared CPU -- measured a
+// trivial 57m route taking 10.3s there (vs. milliseconds on a local dev
+// machine), and a real cross-city route occasionally taking 20s+. 15s was
+// too tight for legitimate (if slow) responses on that tier, so this is
+// raised with real headroom rather than tuned to the bare minimum observed.
+const REQUEST_TIMEOUT_MS = 30000;
 
 // Thrown when a request doesn't finish within REQUEST_TIMEOUT_MS. Screens
 // check `err.isTimeout` to show a "Retry" affordance instead of a dead

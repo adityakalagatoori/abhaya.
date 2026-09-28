@@ -86,6 +86,15 @@ class RoadGraph:
     evidence_store: dict[str, EvidenceRecord] = field(default_factory=dict)
     load_status: dict[str, str] = field(default_factory=dict)
     source: str = "none"
+    # In-process route cache, lives for the server's lifetime. Real road/risk
+    # data doesn't change while the process runs, so an identical (origin,
+    # destination, mode, weights, minute-bucketed depart time) request is
+    # genuinely the same computation -- caching it is not an approximation.
+    # Added specifically because a real cross-city route was measured taking
+    # 40s+ on a CPU-throttled free-tier host (0.6s locally); this doesn't fix
+    # the first computation, but makes every repeat of the same demo route
+    # (e.g. rehearsing/re-recording a walkthrough) instant afterward.
+    _route_cache: dict = field(default_factory=dict)
 
     # ---------------- construction ----------------
 
@@ -344,6 +353,15 @@ class RoadGraph:
         if self.graph.number_of_edges() == 0:
             return None
 
+        cache_key = (
+            round(origin[0], 6), round(origin[1], 6),
+            round(destination[0], 6), round(destination[1], 6),
+            mode, round(w_safety, 4), round(w_time, 4), round(w_infra, 4),
+            round(depart_time / 60.0),  # minute-bucketed -- see class docstring
+        )
+        if cache_key in self._route_cache:
+            return self._route_cache[cache_key]
+
         o_node = self._nearest_node(*origin)
         d_node = self._nearest_node(*destination)
         if o_node is None or d_node is None:
@@ -411,13 +429,15 @@ class RoadGraph:
         objective = w_safety * (1 - (total_risk / max(1, len(edge_states)))) \
             - w_time * total_time - w_infra * total_risk
 
-        return {
+        computed = {
             "edge_states": edge_states,
             "total_distance_m": total_distance,
             "total_time_s": total_time,
             "total_risk": total_risk,
             "objective_value": objective,
         }
+        self._route_cache[cache_key] = computed
+        return computed
 
     def route_fastest(self, origin, destination, mode: str) -> Optional[dict]:
         """Comparison baseline: pure shortest-time route, ignoring risk,
