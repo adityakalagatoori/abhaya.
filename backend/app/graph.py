@@ -27,6 +27,7 @@ from typing import Optional
 import networkx as nx
 
 from shapely.geometry import Point, shape
+from shapely.prepared import prep
 
 from app.config import DEFAULT_WEIGHTS, ROAD_NETWORK_DIR
 from app.data_loader import (haversine_m, load_crime_records, load_cv_infrastructure_evidence,
@@ -81,7 +82,7 @@ class RoadGraph:
     graph: nx.MultiDiGraph = field(default_factory=nx.MultiDiGraph)
     crime_index: SpatialBucketIndex = field(default_factory=SpatialBucketIndex)
     cv_index: SpatialBucketIndex = field(default_factory=SpatialBucketIndex)
-    district_crime_polygons: list[tuple[object, float, str]] = field(default_factory=list)
+    district_crime_polygons: list[tuple[object, object, float, str]] = field(default_factory=list)
     evidence_store: dict[str, EvidenceRecord] = field(default_factory=dict)
     load_status: dict[str, str] = field(default_factory=dict)
     source: str = "none"
@@ -205,7 +206,19 @@ class RoadGraph:
                 poly = shape(rec["geometry"])
             except (ValueError, AttributeError):
                 continue
-            self.district_crime_polygons.append((poly, rec["crime_index"], rec["district"]))
+            # Real admin-boundary polygons from Nominatim/OSM can carry
+            # thousands of vertices (Surat's is 7,517) -- a plain, unprepared
+            # `.contains()` check is O(vertices) per call, and this function
+            # is called for EVERY edge evaluated during routing (potentially
+            # 100k+ times per /route request), which was measured to make a
+            # real cross-city route request exceed 60s on a constrained CPU.
+            # A light simplify (tolerance ~55m, negligible for a
+            # district-level risk boundary) plus shapely's prepared geometry
+            # (builds an internal spatial index once) fixes this: prepared
+            # `.contains()` is effectively O(log n) per call instead of O(n).
+            simplified = poly.simplify(0.0005, preserve_topology=True)
+            prepared = prep(simplified)
+            self.district_crime_polygons.append((prepared, simplified, rec["crime_index"], rec["district"]))
 
     def district_crime_factor(self, lat: float, lon: float) -> float:
         """Real, honestly coarse district-level baseline (see
@@ -217,8 +230,8 @@ class RoadGraph:
         if not self.district_crime_polygons:
             return 0.0
         pt = Point(lon, lat)
-        for poly, idx, _district in self.district_crime_polygons:
-            if poly.contains(pt) or poly.intersects(pt):
+        for prepared, poly, idx, _district in self.district_crime_polygons:
+            if prepared.contains(pt) or prepared.intersects(pt):
                 return idx
         return 0.0
 

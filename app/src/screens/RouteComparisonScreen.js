@@ -13,7 +13,7 @@ import TripBar from "../components/TripBar";
 // geometry. So this screen draws the real ABHAYA route on the map and shows
 // the fastest-route numbers as a comparison card rather than a second line.
 export default function RouteComparisonScreen({ navigation }) {
-  const { routeResult, origin, destination } = useJourney();
+  const { routeResult, origin, destination, mode } = useJourney();
 
   if (!routeResult) {
     return (
@@ -106,6 +106,14 @@ export default function RouteComparisonScreen({ navigation }) {
         <TouchableOpacity style={s.buttonSecondary} onPress={() => navigation.navigate("WalkGuard")}>
           <Text style={s.buttonSecondaryText}>Set up WalkGuard for later</Text>
         </TouchableOpacity>
+        <TouchableOpacity style={s.buttonSecondary} onPress={() => navigation.navigate("Companion")}>
+          <Text style={s.buttonSecondaryText}>Find a fellow traveller</Text>
+        </TouchableOpacity>
+        {mode === "ride_hailing" && (
+          <TouchableOpacity style={s.buttonSecondary} onPress={() => navigation.navigate("BusSafety")}>
+            <Text style={s.buttonSecondaryText}>Check bus safety status</Text>
+          </TouchableOpacity>
+        )}
 
         <Text style={[s.label, { marginTop: 14 }]}>LEARN MORE</Text>
         <TouchableOpacity style={s.buttonSecondary} onPress={() => navigation.navigate("Infrastructure")}>

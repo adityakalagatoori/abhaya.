@@ -9,7 +9,7 @@ from typing import Optional
 from sqlalchemy.orm import Session
 
 from app.db import JourneyStateORM
-from app.models import JourneyState, SafetyState, TravelMode
+from app.models import CompanionStatus, JourneyState, SafetyState, TransitStatus, TravelMode
 
 
 def save_journey(session: Session, js: JourneyState) -> None:
@@ -26,6 +26,8 @@ def save_journey(session: Session, js: JourneyState) -> None:
     row.safety_state = js.safety_state.value
     row.level1_since = js.level1_since
     row.walkguard_active_until = js.walkguard_active_until
+    row.companion_status_json = js.companion_status.model_dump_json() if js.companion_status else None
+    row.transit_status_json = js.transit_status.model_dump_json() if js.transit_status else None
     row.updated_at = time.time()
     session.merge(row)
     session.commit()
@@ -35,6 +37,14 @@ def load_journey(session: Session, journey_id: str) -> Optional[JourneyState]:
     row = session.get(JourneyStateORM, journey_id)
     if row is None:
         return None
+    companion_status = None
+    companion_json = getattr(row, "companion_status_json", None)
+    if companion_json:
+        companion_status = CompanionStatus.model_validate_json(companion_json)
+    transit_status = None
+    transit_json = getattr(row, "transit_status_json", None)
+    if transit_json:
+        transit_status = TransitStatus.model_validate_json(transit_json)
     return JourneyState(
         journey_id=row.journey_id,
         origin=(row.origin_lat, row.origin_lon),
@@ -46,5 +56,7 @@ def load_journey(session: Session, journey_id: str) -> Optional[JourneyState]:
         safety_state=SafetyState(row.safety_state) if row.safety_state else SafetyState.NORMAL,
         level1_since=row.level1_since,
         walkguard_active_until=row.walkguard_active_until,
+        companion_status=companion_status,
+        transit_status=transit_status,
         updated_at=row.updated_at or time.time(),
     )

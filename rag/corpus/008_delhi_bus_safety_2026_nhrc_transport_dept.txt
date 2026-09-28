@@ -1,0 +1,50 @@
+SOURCE_URL: https://nhrc.nic.in/media/press-release/nhrc,-india-takes-suo-motu-cognizance-of-the-reported-sexual-assault-of-a-minor-girl-by-a-bus-driver-and-conductor-in-greater-noida,-uttar-pradesh
+TITLE: NHRC, India takes suo motu cognizance of the reported sexual assault of a minor girl by a bus driver and conductor in Greater Noida, Uttar Pradesh
+PUBLISHER: National Human Rights Commission (NHRC), India
+AUTHOR: NHRC Media/Press Release Unit
+PUBLISH_DATE: 2026-09-01
+RETRIEVED_DATE: 2026-09-28
+REGION: Greater Noida, Uttar Pradesh / Delhi (Kashmere Gate) -- national-context source for ABHAYA TransitGuard
+TOPIC: bus passenger safety, sexual assault on public/sleeper bus, NHRC suo motu cognizance
+
+---
+
+The National Human Rights Commission has taken suo motu cognizance of a media report concerning a 16-year-old girl subjected to gang rape by a bus driver and conductor on August 4, 2026. The incident reportedly occurred on a bus journey from Greater Noida, with the perpetrators allegedly making threats before leaving her at Kashmere Gate Bus Terminal in Delhi.
+
+The Commission issued notices to the Police Commissioners of Delhi and Gautam Budh Nagar and the Mainpuri Superintendent of Police, requesting "a detailed report on the matter within two weeks."
+
+According to reporting from August 31, 2026, the victim departed her home in Mainpuri to visit a cousin in Noida's Sector 63 but missed her stop at Pari Chowk. She subsequently boarded another vehicle after confirming its destination.
+
+The requested report should address investigation status and any victim compensation provided.
+
+Relevance note: This is the real, publicly reported incident that ABHAYA TransitGuard's bus-safety evidence layer (spec section 31.3-31.9) responds to. ABHAYA does not claim to have prevented or investigated this incident; it is cited only as the documented event that motivated the Delhi Transport Department's bus-safety compliance directive (see companion corpus file 009), which TransitGuard surfaces as evidence to travellers. No single factor (tracking, panic button, curtains, lighting) is claimed by ABHAYA to guarantee safety.
+
+---
+
+SOURCE_URL: https://www.securitytoday.in/mandatory-panic-buttons-no-curtains-tinted-glass-delhi-tightens-bus-safety-rules-after-noida-gang-rape/
+TITLE: Mandatory panic buttons, no curtains, tinted glass: Delhi tightens bus safety rules after Noida gang-rape
+PUBLISHER: Security Today
+AUTHOR: Web-post (byline as published)
+PUBLISH_DATE: 2026-09-08
+RETRIEVED_DATE: 2026-09-28
+REGION: Delhi
+TOPIC: Delhi Transport Department bus safety directive -- panic buttons, vehicle location tracking, curtain/tinted-film ban, authorised stops
+
+---
+
+Following an alleged gang-rape of a 16-year-old on a sleeper bus in Noida on August 4, Delhi's Transport Department has implemented stricter safety measures for buses operating in the capital.
+
+Key safety mandates -- bus operators must ensure:
+- Panic buttons and vehicle location tracking devices remain operational continuously.
+- No curtains or tinted film on windows, to maintain visibility.
+- No stops at unsafe locations or unauthorised areas.
+- Valid driving licenses and prescribed uniforms for drivers.
+- Staff verification procedures before deployment.
+
+Emergency protocols: when incidents involving female passengers occur -- including molestation or harassment -- bus crews must immediately contact police and proceed directly to the nearest police station or PCR van.
+
+Additional requirements: operators must sensitize staff about preventing harassment against women passengers. The directive also prohibits driving under the influence and mandates courteous conduct from all personnel. The directions apply to buses operating in Delhi, including buses registered in other states.
+
+Delhi Transport Minister Pankaj Singh is quoted: "Passenger safety is non-negotiable. Every bus operating in Delhi must meet prescribed safety standards."
+
+Relevance note: This is the real published basis for the specific compliance fields ABHAYA TransitGuard evaluates (tracking_active, panic_button_functional, visibility_compliant / no curtains-films, lighting_adequate, authorised_stops). ABHAYA TransitGuard's per-vehicle compliance data is DEMO/placeholder (see backend/app/demo_bus_data.py) because no bus operator publishes real-time per-vehicle telemetry publicly; the compliance CATEGORIES themselves, however, are drawn directly from this real official directive, not invented by the product team.

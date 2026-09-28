@@ -16,18 +16,22 @@ const SURAT_CENTER = { lat: 21.1702, lon: 72.8311 };
 
 export default function DestinationScreen({ navigation }) {
   const { setOrigin, setDestination, mode, setMode, setRouteResult, setJourneyId } = useJourney();
-  const { location, error: gpsError, permissionGranted, start: startLocation, awaitingStart } =
+  const { location, error: gpsError, permissionGranted, start: startLocation, retry: retryLocation, awaitingStart } =
     useDeviceLocation({ requireManualStart: true });
 
   const [destPlace, setDestPlace] = useState(null); // {label, lat, lon}
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(null);
 
-  // Dev-only manual origin override: ABHAYA's real data only covers Surat. A
-  // tester whose real device GPS is elsewhere has no real road graph to
-  // route from at their actual location, so this lets a tester search a
-  // Surat-area origin instead -- never shown in a release build, since a
-  // safety app should never look like it lets you fake your location.
+  // Manual origin selector: ABHAYA's real data (road network, crime, POIs)
+  // only covers Surat/Jaipur. A user whose real device GPS is elsewhere (a
+  // judge testing the deployed link, or genuinely anyone outside those
+  // cities) has no real road graph to route from at their actual location.
+  // This is intentionally visible and honestly labeled -- not a hidden
+  // "fake your GPS" toggle -- because it's the only way to actually use the
+  // real data ABHAYA has when your real location falls outside its
+  // real-data coverage area. Real GPS is still the default and still used
+  // whenever your real location is usable.
   const [useManualOrigin, setUseManualOrigin] = useState(false);
   const [manualOriginPlace, setManualOriginPlace] = useState(null);
 
@@ -89,17 +93,14 @@ export default function DestinationScreen({ navigation }) {
       <View style={s.card}>
         <View style={[s.row, { marginBottom: 6 }]}>
           <Text style={s.label}>YOUR STARTING POINT</Text>
-          {/* Dev-only, see comment above. */}
-          {__DEV__ && (
-            <TouchableOpacity onPress={() => setUseManualOrigin((v) => !v)}>
-              <Text style={{ color: colors.accent, fontWeight: "700", fontSize: 12 }}>
-                {useManualOrigin ? "Use real GPS instead" : "Search a different origin (testing)"}
-              </Text>
-            </TouchableOpacity>
-          )}
+          <TouchableOpacity onPress={() => setUseManualOrigin((v) => !v)}>
+            <Text style={{ color: colors.accent, fontWeight: "700", fontSize: 12 }}>
+              {useManualOrigin ? "Use my real GPS instead" : "Not in Surat? Search a starting point"}
+            </Text>
+          </TouchableOpacity>
         </View>
 
-        {useManualOrigin && __DEV__ ? (
+        {useManualOrigin ? (
           <PlaceSearchInput
             placeholder="Search a Surat-area starting point..."
             biasLat={SURAT_CENTER.lat}
@@ -109,15 +110,19 @@ export default function DestinationScreen({ navigation }) {
           />
         ) : location ? (
           <Text style={{ color: colors.text }}>Your current location</Text>
+        ) : gpsError ? (
+          <View>
+            <Text style={s.errorText}>{gpsError}</Text>
+            <TouchableOpacity style={[s.buttonSecondary, { marginTop: 8 }]} onPress={retryLocation}>
+              <Text style={s.buttonSecondaryText}>Try again</Text>
+            </TouchableOpacity>
+          </View>
         ) : (
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <ActivityIndicator color={colors.accent} />
-            <Text style={{ color: colors.textDim, marginLeft: 8 }}>
-              {permissionGranted === false ? "Location permission denied" : "Waiting for your location..."}
-            </Text>
+            <Text style={{ color: colors.textDim, marginLeft: 8 }}>Waiting for your location...</Text>
           </View>
         )}
-        {!useManualOrigin && gpsError ? <Text style={s.errorText}>{gpsError}</Text> : null}
       </View>
 
       <View style={s.card}>
@@ -149,7 +154,16 @@ export default function DestinationScreen({ navigation }) {
 
       <ApiErrorRetry error={err} onRetry={handleFindRoute} />
 
-      <TouchableOpacity style={s.button} onPress={handleFindRoute} disabled={loading || !haveOrigin || !destPlace}>
+      {!loading && (!haveOrigin || !destPlace) && (
+        <Text style={[s.muted, { textAlign: "center", marginBottom: 4 }]}>
+          {!haveOrigin ? "Enable location or search a starting point above" : "Search and select a destination above"}
+        </Text>
+      )}
+      <TouchableOpacity
+        style={[s.button, (loading || !haveOrigin || !destPlace) && s.buttonDisabled]}
+        onPress={handleFindRoute}
+        disabled={loading || !haveOrigin || !destPlace}
+      >
         {loading ? <ActivityIndicator color="#FFFFFF" /> : <Text style={s.buttonText}>Find safe route</Text>}
       </TouchableOpacity>
     </ScrollView>

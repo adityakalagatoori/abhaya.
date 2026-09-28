@@ -49,6 +49,8 @@ class JourneyStateORM(Base):
     safety_state = Column(String, default="normal")
     level1_since = Column(Float, nullable=True)
     walkguard_active_until = Column(Float, nullable=True)
+    companion_status_json = Column(String, nullable=True)  # JSON-serialized CompanionStatus, or null
+    transit_status_json = Column(String, nullable=True)  # JSON-serialized TransitStatus, or null
     updated_at = Column(Float)
 
 

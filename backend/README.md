@@ -3,7 +3,10 @@
 FastAPI backend implementing the shared Risk State / Evidence Record / Journey
 State architecture (spec section 25) and all 7 endpoints from spec section 17:
 dynamic risk-aware routing, infrastructure evidence, SafeDrop, RouteGuard,
-WalkGuard, verified safe-havens, and the safety-insight (RAG/LLM) contract.
+WalkGuard, verified safe-havens, and the safety-insight (RAG/LLM) contract --
+plus Fellow Traveller Matching / Journey Companion (spec section 31.1/31.2/31.9:
+`POST /companions/match`, `POST /companions/request`), which plugs into the
+same shared Journey State.
 
 ## Run it
 
@@ -156,6 +159,58 @@ the RAG/LLM agent is wired in, it returns a deterministic template built only
 from the supplied structured data, and reports `grounded:false` with an
 `uncertainty_note` when no passages are supplied, rather than fabricating an
 explanation.
+
+### `POST /companions/match`
+Fellow Traveller Matching (spec section 31.1/31.2/31.9). Request:
+`{origin:{lat,lon}, destination:{lat,lon}, time?, mode}`. Real matching
+algorithm (`app/matching.py`): route-corridor overlap (real road-graph
+route or haversine straight-line sampling + point-to-polyline distance),
+time-window overlap (real interval-overlap math), meeting-point
+practicality (real haversine distance from the overlap centroid), and
+verification/trust evidence (`phone_verified` field). Companion Match =
+`w1*route_overlap + w2*time_overlap + w3*meeting_point_practicality +
+w4*verification_evidence`. Response never includes a candidate's exact
+origin/home address — only `first_name_or_initial`, `verification_evidence`,
+`route_overlap_pct`, `time_overlap_minutes`, `travel_window`, a *computed*
+`meeting_point`, and `match_score`. The candidate pool matched against is
+currently `app/companion_seed.py` — explicitly labeled demo/placeholder
+traveller journeys, since ABHAYA has no real second users yet; the matching
+algorithm itself is real.
+
+### `POST /companions/request`
+Request: `{journey_id, candidate_id}`. Attaches a `CompanionStatus` (real
+match score, verified flag, meeting point) to the **same** `JourneyState`
+row identified by `journey_id` (spec 31.5: "Journey State: shared journey")
+rather than creating a separate parallel companion object. 404 if the
+journey or candidate doesn't exist. Response: `{journey_id, companion_status,
+journey}`.
+
+### `GET /bus/safety-status?vehicle_id=&operator=&journey_id=`
+**ABHAYA TransitGuard** (spec section 31.4/31.9). Returns tracking/panic-button/
+visibility/lighting/authorised-stop evidence for a bus, each shaped as an
+`EvidenceRecord`-style object (`value`, `raw_value`, `source`, `timestamp`,
+`confidence`). This is demo/placeholder data — `app/demo_bus_data.py` — because
+no bus operator publishes real per-vehicle telemetry; `data_source_status`
+always says `DEMO_BUS_FLEET_DATA: ...` so it is never mistaken for live data.
+The compliance *categories* themselves (tracking device, panic button, no
+curtains/tinted film, lighting, authorised stops) come from the real Delhi
+Transport Department September 2026 directive issued after the Greater Noida
+bus assault (NHRC suo motu cognizance) — see
+`rag/corpus/008_delhi_bus_safety_2026_nhrc_transport_dept.txt`. Demo
+`vehicle_id`s: `DL1PC1234`, `UP16XX9988`, `DL1PD5566`, `HR26AB4321`.
+
+### `POST /transitguard/check`
+Request: `{journey_id?, vehicle_id, expected_route_segment_ids:[...], current:{lat,lon}, current_time?, expected_time?, include_bus_evidence?}`
+Reuses the **exact same** map-matching and risk-comparison logic as
+`/routeguard/check` (`app/routers/transitguard.py`) — real road graph,
+`RoadGraph.edge_risk_state()`, the same `normal` / `level1_subtle_checkin` /
+`level2_critical_escalation` tiering with the same persistence gate
+(`ROUTEGUARD_LEVEL2_PERSIST_SEC`) — applied to a bus's live GPS instead of a
+ride-hailing vehicle's. Optionally folds in the bus's demo compliance score
+(`bus_compliance_score`) into the reason text when evidence is weak, without
+ever treating non-compliance alone as proof of danger. Updates the shared
+`JourneyState.transit_status` (additive field, section 25) when `journey_id`
+is supplied.
 
 ## Explainability
 

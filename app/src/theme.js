@@ -95,6 +95,12 @@ export const s = {
     elevation: 6,
   },
   buttonText: { color: "#FFFFFF", fontWeight: "800", fontSize: 15.5, letterSpacing: 0.3 },
+  buttonDisabled: {
+    backgroundColor: colors.textDim,
+    opacity: 0.5,
+    shadowOpacity: 0,
+    elevation: 0,
+  },
   buttonSecondary: {
     backgroundColor: colors.cardAlt,
     borderRadius: 26,

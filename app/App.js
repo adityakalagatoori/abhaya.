@@ -23,6 +23,8 @@ import SettingsScreen from "./src/screens/SettingsScreen";
 import AvatarCustomizeScreen from "./src/screens/AvatarCustomizeScreen";
 import TripCompleteScreen from "./src/screens/TripCompleteScreen";
 import OnboardingScreen, { hasSeenOnboarding } from "./src/screens/OnboardingScreen";
+import CompanionScreen from "./src/screens/CompanionScreen";
+import BusSafetyScreen from "./src/screens/BusSafetyScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -78,6 +80,8 @@ export default function App() {
             <Stack.Screen name="TripComplete" component={TripCompleteScreen} options={{ title: "Trip complete", headerBackVisible: false }} />
             <Stack.Screen name="SafeHaven" component={SafeHavenScreen} options={{ title: "Safe havens" }} />
             <Stack.Screen name="SafetyInsight" component={SafetyInsightScreen} options={{ title: "Insight" }} />
+            <Stack.Screen name="Companion" component={CompanionScreen} options={{ title: "Companion" }} />
+            <Stack.Screen name="BusSafety" component={BusSafetyScreen} options={{ title: "Bus safety" }} />
             <Stack.Screen name="Settings" component={SettingsScreen} options={{ title: "Backend settings" }} />
             <Stack.Screen name="AvatarCustomize" component={AvatarCustomizeScreen} options={{ title: "Your avatar" }} />
           </Stack.Navigator>

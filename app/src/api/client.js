@@ -146,3 +146,48 @@ export function postSafetyInsight({ route_context, retrieved_passages = [], ques
 export function getHealth() {
   return request("/health");
 }
+
+// POST /companions/match -- CompanionMatchRequest -> CompanionMatchResponse
+export function postCompanionsMatch({ origin, destination, time, mode = "walk" }) {
+  return request("/companions/match", {
+    method: "POST",
+    body: { origin, destination, time, mode },
+  });
+}
+
+// POST /companions/request -- CompanionRequestIn -> CompanionRequestResponse
+export function postCompanionsRequest({ journey_id, candidate_id }) {
+  return request("/companions/request", {
+    method: "POST",
+    body: { journey_id, candidate_id },
+  });
+}
+
+// GET /bus/safety-status?vehicle_id=&operator=&journey_id=
+export function getBusSafetyStatus({ vehicle_id, operator, journey_id }) {
+  return request("/bus/safety-status", { query: { vehicle_id, operator, journey_id } });
+}
+
+// POST /transitguard/check -- TransitGuardCheckRequest -> TransitGuardCheckResponse
+export function postTransitGuardCheck({
+  journey_id,
+  vehicle_id,
+  expected_route_segment_ids,
+  current,
+  current_time,
+  expected_time,
+  include_bus_evidence = true,
+}) {
+  return request("/transitguard/check", {
+    method: "POST",
+    body: {
+      journey_id,
+      vehicle_id,
+      expected_route_segment_ids,
+      current,
+      current_time,
+      expected_time,
+      include_bus_evidence,
+    },
+  });
+}

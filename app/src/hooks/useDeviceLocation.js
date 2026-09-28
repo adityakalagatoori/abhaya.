@@ -20,9 +20,16 @@ export function useDeviceLocation({
   const [error, setError] = useState(null);
   const [permissionGranted, setPermissionGranted] = useState(null);
   const [started, setStarted] = useState(!requireManualStart);
+  const [attempt, setAttempt] = useState(0);
   const subRef = useRef(null);
 
   const start = useCallback(() => setStarted(true), []);
+  // Re-runs the effect below even though `started` is already true, so a
+  // failed/timed-out attempt can be retried without a full remount.
+  const retry = useCallback(() => {
+    setError(null);
+    setAttempt((a) => a + 1);
+  }, []);
 
   useEffect(() => {
     if (!started) return undefined;
@@ -38,12 +45,29 @@ export function useDeviceLocation({
       }
 
       try {
-        const initial = await Location.getCurrentPositionAsync({
-          accuracy: Location.Accuracy.High,
-        });
+        // getCurrentPositionAsync has no built-in timeout. On web (especially
+        // Windows Chrome), if OS-level Location Services are off, the browser's
+        // geolocation call can hang forever with no error at all -- observed
+        // directly on the deployed Vercel build. Race it against a real
+        // timeout so the user gets an actionable message instead of an
+        // infinite "Waiting for your location..." spinner.
+        const initial = await Promise.race([
+          Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High }),
+          new Promise((_, reject) =>
+            setTimeout(() => reject(new Error("TIMEOUT")), 15000)
+          ),
+        ]);
         if (mounted) setLocation(initial);
       } catch (e) {
-        if (mounted) setError(String(e));
+        if (!mounted) return;
+        if (String(e).includes("TIMEOUT")) {
+          setError(
+            "Couldn't get your location after 15s. Check that Location Services are turned on " +
+              "for this device/browser, then try again."
+          );
+        } else {
+          setError(String(e));
+        }
       }
 
       if (watch) {
@@ -60,7 +84,7 @@ export function useDeviceLocation({
       mounted = false;
       if (subRef.current) subRef.current.remove();
     };
-  }, [started, watch]);
+  }, [started, watch, attempt]);
 
-  return { location, error, permissionGranted, start, awaitingStart: requireManualStart && !started };
+  return { location, error, permissionGranted, start, retry, awaitingStart: requireManualStart && !started };
 }

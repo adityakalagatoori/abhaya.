@@ -100,6 +100,41 @@ class TravelMode(str, Enum):
     RIDE_HAILING = "ride_hailing"
 
 
+class CompanionRequestStatus(str, Enum):
+    REQUESTED = "requested"
+    ACCEPTED = "accepted"
+
+
+class CompanionStatus(BaseModel):
+    """Companion relationship attached to an existing JourneyState (spec
+    31.1/31.5: the companion relationship becomes attached to the SAME
+    Journey State, not a separate parallel object). Never carries the
+    candidate's exact home/origin address -- only what section 31.2's
+    privacy rule allows to be shared: first name/initial, verified status,
+    the computed meeting point, and the match score."""
+    candidate_id: str
+    first_name_or_initial: str
+    verified: bool
+    meeting_point: "LatLon"
+    match_score: float
+    status: CompanionRequestStatus = CompanionRequestStatus.REQUESTED
+    requested_at: float = Field(default_factory=time.time)
+
+
+class TransitStatus(BaseModel):
+    """Bus-journey status attached to an existing JourneyState (spec 31.4/31.5:
+    TransitGuard reuses the SAME Journey State rather than a separate object).
+    Mirrors safety_state's tiering but tracks the bus-specific deviation state
+    plus a reference to the vehicle whose demo/real compliance evidence was
+    last checked, so the shared journey timeline (spec 31.8 'Shared Journey'
+    screen) can show bus + companion + route in one place."""
+    vehicle_id: str
+    transit_state: SafetyState = SafetyState.NORMAL
+    level1_since: Optional[float] = None
+    last_checked_at: float = Field(default_factory=time.time)
+    last_matched_segment_id: Optional[str] = None
+
+
 class JourneyState(BaseModel):
     journey_id: str = Field(default_factory=lambda: new_id("jrn"))
     origin: tuple[float, float]
@@ -112,6 +147,8 @@ class JourneyState(BaseModel):
     safety_state: SafetyState = SafetyState.NORMAL
     level1_since: Optional[float] = None
     walkguard_active_until: Optional[float] = None
+    companion_status: Optional[CompanionStatus] = None
+    transit_status: Optional[TransitStatus] = None
     updated_at: float = Field(default_factory=time.time)
 
 
@@ -305,3 +342,125 @@ class SafetyInsightResponse(BaseModel):
     grounded: bool
     sources_used: list[dict]
     uncertainty_note: Optional[str] = None
+
+
+# ---------------------------------------------------------------------------
+# Fellow Traveller Matching / Journey Companion (spec section 31.1/31.2/31.9)
+# ---------------------------------------------------------------------------
+
+class CompanionMatchRequest(BaseModel):
+    origin: LatLon
+    destination: LatLon
+    time: Optional[float] = None  # unix ts of departure; default = now
+    mode: TravelMode = TravelMode.WALK
+
+
+class VerificationEvidence(BaseModel):
+    """Trust evidence shown SEPARATELY from the match relevance score
+    (spec 31.2: "Verification evidence should be displayed separately from
+    the match relevance so the user can make their own decision")."""
+    phone_verified: bool
+    evidence_score: float  # 0..1, contributes to w4 term of the match score
+
+
+class CompanionCandidateOut(BaseModel):
+    """Privacy-preserving candidate view (spec 31.1/31.2): first name/initial,
+    verified status, approximate route overlap, travel window, meeting point.
+    Exact home/origin address is NEVER included."""
+    candidate_id: str
+    first_name_or_initial: str
+    verification_evidence: VerificationEvidence
+    route_overlap_pct: float
+    time_overlap_minutes: float
+    travel_window: dict  # {"start": ts, "end": ts} -- candidate's journey window, not their home location
+    meeting_point: LatLon
+    meeting_point_label: str
+    meeting_point_practicality: float  # 0..1
+    match_score: float
+
+
+class CompanionMatchResponse(BaseModel):
+    origin: LatLon
+    destination: LatLon
+    time: float
+    mode: TravelMode
+    candidates: list[CompanionCandidateOut]
+    data_source_status: str
+    weights: dict
+
+
+class CompanionRequestIn(BaseModel):
+    journey_id: str
+    candidate_id: str
+
+
+class CompanionRequestResponse(BaseModel):
+    journey_id: str
+    companion_status: CompanionStatus
+    journey: JourneyState
+
+
+# ---------------------------------------------------------------------------
+# ABHAYA TransitGuard -- bus journey safety layer (spec section 31.3-31.9)
+# ---------------------------------------------------------------------------
+
+class BusEvidenceRecord(BaseModel):
+    """EvidenceRecord-shaped compliance observation for one bus-safety
+    category (spec 25: value/source/timestamp/confidence), used by
+    GET /bus/safety-status. `value` is the boolean compliance value coerced
+    to 0.0/1.0 so it slots into the same numeric convention as EvidenceRecord;
+    `raw_value` keeps the human-readable form."""
+    factor: str  # "tracking_active" | "panic_button_functional" | "visibility_compliant" | "lighting_adequate" | "authorised_stops"
+    value: float
+    raw_value: str
+    source: str
+    timestamp: float
+    confidence: float
+
+
+class BusSafetyStatusRequest(BaseModel):
+    vehicle_id: str
+    operator: Optional[str] = None
+    journey_id: Optional[str] = None
+
+
+class BusSafetyStatusResponse(BaseModel):
+    vehicle_id: str
+    operator: Optional[str]
+    route_name: Optional[str]
+    found: bool
+    tracking: Optional[BusEvidenceRecord] = None
+    panic_button: Optional[BusEvidenceRecord] = None
+    visibility: Optional[BusEvidenceRecord] = None
+    lighting: Optional[BusEvidenceRecord] = None
+    authorised_stops: Optional[BusEvidenceRecord] = None
+    overall_compliance_score: float  # 0..1, fraction of boolean checks that pass
+    data_source_status: str
+    reason: str
+
+
+class TransitGuardCheckRequest(BaseModel):
+    journey_id: Optional[str] = None
+    vehicle_id: str
+    expected_route_segment_ids: list[str]
+    current: LatLon
+    current_time: Optional[float] = None
+    expected_time: Optional[float] = None
+    include_bus_evidence: bool = True
+
+
+class TransitGuardCheckResponse(BaseModel):
+    journey_id: Optional[str]
+    vehicle_id: str
+    matched_segment_id: Optional[str]
+    is_on_expected_route: bool
+    deviation_distance_m: float
+    expected_segment_risk: Optional[float]
+    actual_segment_risk: Optional[float]
+    risk_delta: float
+    bus_compliance_score: Optional[float]
+    bus_data_source_status: Optional[str]
+    transit_state: SafetyState
+    response_level: str
+    reason: str
+    evidence_ids: list[str]
