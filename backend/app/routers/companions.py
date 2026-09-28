@@ -49,6 +49,13 @@ def post_companions_match(req: CompanionMatchRequest):
         "a placeholder dataset."
     )
 
+    # Shared across every candidate in this loop so the requester's own
+    # journey (identical each iteration) and repeat candidate journeys are
+    # only ever routed once via the real road graph per request, not
+    # recomputed from scratch for each candidate -- see matching.py's
+    # compute_companion_match docstring.
+    route_cache: dict = {}
+
     scored: list[CompanionCandidateOut] = []
     for dj in demo_journeys:
         result = compute_companion_match(
@@ -57,6 +64,7 @@ def post_companions_match(req: CompanionMatchRequest):
             dj.origin, dj.destination, dj.mode, dj.departure_time,
             dj.phone_verified,
             weights=DEFAULT_COMPANION_WEIGHTS,
+            route_cache=route_cache,
         )
         if result is None:
             continue  # no route-corridor overlap at all -- not a candidate (31.1)
