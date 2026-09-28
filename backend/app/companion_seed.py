@@ -99,6 +99,18 @@ DEMO_TRAVELLER_JOURNEYS: list[DemoTravellerJourney] = [
         mode="walk",
         phone_verified=True,
     ),
+    DemoTravellerJourney(
+        candidate_id="demo_traveller_006",
+        first_name_or_initial="P.",
+        # Real Surat coordinates near Athwa Gate -> the Ring Road/Adajan area,
+        # matching the walkthrough demo's actual test route so a companion
+        # match is reproducible without re-searching a second destination.
+        origin=(21.1850, 72.8103),
+        destination=(21.1872, 72.8100),
+        departure_time=_ts(0.5),  # departing soon, so time overlap is real too
+        mode="walk",
+        phone_verified=True,
+    ),
 ]
 
 
