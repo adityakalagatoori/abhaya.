@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, ActivityIndicator, TextInput } from "react-native";
+import { View, Text, TouchableOpacity, ActivityIndicator, TextInput, ScrollView } from "react-native";
 import { s, colors } from "../theme";
 import { useJourney } from "../context/JourneyContext";
 import { postSafetyInsight } from "../api/client";
@@ -39,7 +39,7 @@ export default function SafetyInsightScreen() {
   }
 
   return (
-    <View style={s.screen}>
+    <ScrollView style={s.screen} contentContainerStyle={{ paddingBottom: 40 }}>
       <Text style={s.title}>Ask ABHAYA</Text>
       <Text style={s.subtitle}>Get a plain-language explanation of why this route was chosen.</Text>
 
@@ -62,6 +62,6 @@ export default function SafetyInsightScreen() {
           )}
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 }

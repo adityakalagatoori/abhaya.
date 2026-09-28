@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, ActivityIndicator } from "react-native";
+import { View, Text, FlatList, ActivityIndicator, ScrollView } from "react-native";
 import { s, colors } from "../theme";
 import { useJourney } from "../context/JourneyContext";
 import { getInfrastructure } from "../api/client";
@@ -41,7 +41,7 @@ export default function InfrastructureScreen() {
   const hasDetections = data?.detections?.length > 0;
 
   return (
-    <View style={s.screen}>
+    <ScrollView style={s.screen} contentContainerStyle={{ paddingBottom: 40 }}>
       <Text style={s.title}>What we can see nearby</Text>
       <Text style={s.subtitle}>Real streetlight, visibility, and nearby-business evidence, spotted from street photos.</Text>
 
@@ -62,6 +62,7 @@ export default function InfrastructureScreen() {
             <FlatList
               data={data.detections}
               keyExtractor={(item) => item.evidence_id}
+              scrollEnabled={false}
               renderItem={({ item }) => {
                 const info = FACTOR_INFO[item.factor] || { label: item.factor.replace(/_/g, " "), icon: "📍" };
                 const confidencePct = Math.round((item.confidence || 0) * 100);
@@ -78,6 +79,6 @@ export default function InfrastructureScreen() {
           )}
         </>
       )}
-    </View>
+    </ScrollView>
   );
 }

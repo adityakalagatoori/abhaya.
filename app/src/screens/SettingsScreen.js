@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert, ScrollView } from "react-native";
 import { s, colors } from "../theme";
 import { API_BASE_URL, setApiBaseUrl, getHealth } from "../api/client";
 import AvatarBadge from "../components/AvatarBadge";
@@ -21,7 +21,7 @@ export default function SettingsScreen({ navigation }) {
   }
 
   return (
-    <View style={s.screen}>
+    <ScrollView style={s.screen} contentContainerStyle={{ paddingBottom: 40 }}>
       <View style={[s.card, { flexDirection: "row", alignItems: "center", justifyContent: "space-between" }]}>
         <View>
           <Text style={{ color: colors.text, fontWeight: "800", fontSize: 15 }}>Your avatar</Text>
@@ -52,6 +52,6 @@ export default function SettingsScreen({ navigation }) {
           <Text style={s.subtitle}>ABHAYA — your safety companion.</Text>
         </>
       )}
-    </View>
+    </ScrollView>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import LeafletMap from "../components/LeafletMap";
 import { s, colors } from "../theme";
 import { useJourney } from "../context/JourneyContext";
@@ -64,7 +64,7 @@ export default function LiveRideScreen({ navigation }) {
   const traceCoords = SURAT_REAL_TRACE.map((p) => ({ lat: p.lat, lon: p.lon }));
 
   return (
-    <View style={s.screen}>
+    <ScrollView style={s.screen} contentContainerStyle={{ paddingBottom: 40 }}>
       <Text style={s.title}>Your ride, watched over</Text>
       <TripBar navigation={navigation} currentScreen="LiveRide" />
       <Text style={s.subtitle}>We check your vehicle's position against the route we expected, the whole way.</Text>
@@ -125,6 +125,6 @@ export default function LiveRideScreen({ navigation }) {
           </TouchableOpacity>
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 }

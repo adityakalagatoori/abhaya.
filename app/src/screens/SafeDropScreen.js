@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, ActivityIndicator, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, ActivityIndicator, FlatList, ScrollView } from "react-native";
 import LeafletMap from "../components/LeafletMap";
 import { s, colors } from "../theme";
 import { useJourney } from "../context/JourneyContext";
@@ -59,7 +59,7 @@ export default function SafeDropScreen({ navigation }) {
     : [];
 
   return (
-    <View style={s.screen}>
+    <ScrollView style={s.screen} contentContainerStyle={{ paddingBottom: 40 }}>
       <Text style={s.title}>Where should you actually get out?</Text>
       <TripBar navigation={navigation} currentScreen="SafeDrop" />
       <Text style={s.subtitle}>Your destination pin might not be the safest spot to stop. Let's check nearby.</Text>
@@ -121,6 +121,6 @@ export default function SafeDropScreen({ navigation }) {
           </TouchableOpacity>
         </>
       )}
-    </View>
+    </ScrollView>
   );
 }

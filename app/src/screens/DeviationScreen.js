@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Alert } from "react-native";
+import { View, Text, TouchableOpacity, Alert, ScrollView } from "react-native";
 import { s, colors } from "../theme";
 import { useJourney } from "../context/JourneyContext";
 import AvatarBadge from "../components/AvatarBadge";
@@ -29,7 +29,7 @@ export default function DeviationScreen({ route, navigation }) {
   }
 
   return (
-    <View style={s.screen}>
+    <ScrollView style={s.screen} contentContainerStyle={{ paddingBottom: 40 }}>
       <View style={{ alignItems: "center", marginBottom: 8 }}>
         <AvatarBadge size={64} />
       </View>
@@ -69,6 +69,6 @@ export default function DeviationScreen({ route, navigation }) {
       <TouchableOpacity style={s.buttonSecondary} onPress={() => navigation.navigate("LiveRide")}>
         <Text style={s.buttonSecondaryText}>Back to ride</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { s, colors } from "../theme";
 import { useJourney } from "../context/JourneyContext";
 import { useMotionFeatures } from "../hooks/useMotionFeatures";
@@ -93,7 +93,7 @@ export default function WalkGuardScreen({ navigation }) {
   }
 
   return (
-    <View style={s.screen}>
+    <ScrollView style={s.screen} contentContainerStyle={{ paddingBottom: 40 }}>
       <View style={{ flexDirection: "row", alignItems: "center", marginBottom: 4 }}>
         <AvatarBadge size={44} />
         <View style={{ marginLeft: 12, flex: 1 }}>
@@ -172,6 +172,6 @@ export default function WalkGuardScreen({ navigation }) {
           )}
         </>
       )}
-    </View>
+    </ScrollView>
   );
 }

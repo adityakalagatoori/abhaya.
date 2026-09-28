@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
 import { s, colors } from "../theme";
 import { useJourney } from "../context/JourneyContext";
 import AvatarBadge from "../components/AvatarBadge";
@@ -22,7 +22,10 @@ export default function TripCompleteScreen({ navigation }) {
   }
 
   return (
-    <View style={[s.screen, { justifyContent: "center", alignItems: "center" }]}>
+    <ScrollView
+      style={s.screen}
+      contentContainerStyle={{ flexGrow: 1, justifyContent: "center", alignItems: "center", paddingBottom: 40 }}
+    >
       <AvatarBadge size={88} />
       <Text style={[s.title, { textAlign: "center", marginTop: 16 }]}>You're safely there</Text>
       <Text style={[s.subtitle, { textAlign: "center" }]}>
@@ -40,6 +43,6 @@ export default function TripCompleteScreen({ navigation }) {
       <TouchableOpacity style={[s.button, { width: "100%", marginTop: 20 }]} onPress={startNewTrip}>
         <Text style={s.buttonText}>Start a new trip</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }

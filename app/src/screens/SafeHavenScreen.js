@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, ActivityIndicator, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, ActivityIndicator, TouchableOpacity, ScrollView } from "react-native";
 import { s, colors } from "../theme";
 import { useDeviceLocation } from "../hooks/useDeviceLocation";
 import { getSafeHavens } from "../api/client";
@@ -24,7 +24,7 @@ export default function SafeHavenScreen({ navigation }) {
   useEffect(load, [location]);
 
   return (
-    <View style={s.screen}>
+    <ScrollView style={s.screen} contentContainerStyle={{ paddingBottom: 40 }}>
       <Text style={s.title}>Somewhere safe to wait</Text>
       <TripBar navigation={navigation} currentScreen="SafeHaven" />
       <Text style={s.subtitle}>Real open, verified places nearby where you can wait for your ride.</Text>
@@ -35,6 +35,7 @@ export default function SafeHavenScreen({ navigation }) {
       {data && (
         <FlatList
           style={{ marginTop: 10 }}
+          scrollEnabled={false}
           data={data.candidates}
           keyExtractor={(item, i) => `${item.name}-${i}`}
           ListEmptyComponent={
@@ -65,6 +66,6 @@ export default function SafeHavenScreen({ navigation }) {
       <TouchableOpacity style={[s.button, { marginTop: 12 }]} onPress={() => navigation.navigate("SafeDrop")}>
         <Text style={s.buttonText}>Continue: check my drop-off spot</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }

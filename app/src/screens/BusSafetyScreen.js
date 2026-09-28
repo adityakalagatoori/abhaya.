@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, ActivityIndicator, TextInput } from "react-native";
+import { View, Text, TouchableOpacity, ActivityIndicator, TextInput, ScrollView } from "react-native";
 import { s, colors } from "../theme";
 import { getBusSafetyStatus, postTransitGuardCheck } from "../api/client";
 import ApiErrorRetry from "../components/ApiErrorRetry";
@@ -62,7 +62,7 @@ export default function BusSafetyScreen({ navigation }) {
     : [];
 
   return (
-    <View style={s.screen}>
+    <ScrollView style={s.screen} contentContainerStyle={{ paddingBottom: 40 }}>
       <Text style={s.title}>Bus safety status</Text>
       <TripBar navigation={navigation} currentScreen="BusSafety" />
       <Text style={s.subtitle}>
@@ -132,6 +132,6 @@ export default function BusSafetyScreen({ navigation }) {
           )}
         </>
       )}
-    </View>
+    </ScrollView>
   );
 }

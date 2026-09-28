@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, ActivityIndicator, FlatList } from "react-native";
+import { View, Text, TouchableOpacity, ActivityIndicator, FlatList, ScrollView } from "react-native";
 import { s, colors } from "../theme";
 import { useJourney } from "../context/JourneyContext";
 import { postCompanionsMatch, postCompanionsRequest } from "../api/client";
@@ -59,7 +59,7 @@ export default function CompanionScreen({ navigation }) {
   }
 
   return (
-    <View style={s.screen}>
+    <ScrollView style={s.screen} contentContainerStyle={{ paddingBottom: 40 }}>
       <Text style={s.title}>Travel with someone</Text>
       <TripBar navigation={navigation} currentScreen="Companion" />
       <Text style={s.subtitle}>
@@ -84,6 +84,7 @@ export default function CompanionScreen({ navigation }) {
           <FlatList
             data={result.candidates}
             keyExtractor={(c) => c.candidate_id}
+            scrollEnabled={false}
             ListEmptyComponent={
               <View style={s.card}>
                 <Text style={{ color: colors.text, fontWeight: "700" }}>No overlapping travellers right now</Text>
@@ -119,6 +120,6 @@ export default function CompanionScreen({ navigation }) {
           />
         </>
       )}
-    </View>
+    </ScrollView>
   );
 }
